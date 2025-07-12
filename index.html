@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kela+</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="./style/styles.css">
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0.4;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .testimonial-card {
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .active-dot {
+            transform: scale(1.4);
+            background-color: #d058f6;
+        }
+
+        .nav-button {
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color:#d058f6;
+            color: white;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-light': '#d058f6',
+                        'primary': '#b852f0',
+                        'accent': '#74e1eb',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .video-fade {
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+
+        .sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-open {
+            transform: translateX(0);
+        }
+
+        [aria-current="page"] {
+            border-bottom: 2px solid #d058f6;
+            color: #d058f6 !important;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes grow {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out forwards;
+        }
+
+        .animate-grow {
+            animation: grow 0.6s ease-out forwards;
+            transform-origin: center;
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+
+
+
+</head>
+
+<body class="bg-gray-50 w-screen h-screen overflow-x-hidden">
+
+    <!-- Vidéo uniquement sur la section principale -->
+    <section class="relative h-[80%] md:h-screen  flex items-center justify-center text-center overflow-hidden">
+        <video id="bg-video" autoplay muted playsinline
+            class="absolute top-0 left-0 w-full h-full object-cover z-0 video-fade fade-in">
+            <source src="./videos/bg.mp4" type="video/mp4">
+        </video>
+
+        <!-- Navbar -->
+        <nav id="navbar"
+            class="fixed top-0 w-screen z-50 overflow-hidden transition-all duration-300 ease-in-out   backdrop-blur-lg">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="flex items-center">
+                        <img src="./img/logo.png" alt="Logo Greatfy - Retour à l'accueil" class="pt-2 h-20 w-auto" />
+                    </div>
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-primary-light hover:text-gray-300 font-medium transition"
+                            aria-current="page">Accueil</a>
+                        <a href="#services" class="text- hover:text-[#D058F6] font-medium transition">Services</a>
+                        <a href="#products" class="text- hover:text-[#D058F6] font-medium transition">Produits</a>
+                        <a href="#promotions" class="text- hover:text-[#D058F6] font-medium transition">Promotions</a>
+                        <a href="#about" class="text- hover:text-[#D058F6] font-medium transition">À propos</a>
+                        <button
+                            class="px-4 py-2 bg-primary-light text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
+                            <span class="material-icons align-middle mr-3">shopping_cart</span>Essayer gratuitement
+                        </button>
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button id="menu-toggle"
+                            class="text-black focus:outline-none focus:ring-2 focus:ring-primary-light rounded-lg p-1"
+                            aria-label="Menu principal" aria-expanded="false" aria-controls="mobile-menu">
+                            <span class="material-icons text-3xl">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenu principal sur vidéo -->
+        <div class="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="max-w-2xl  mt-12 mx-auto flex-col flex justify-center items-center text-white">
+                <h1 class="md:mt-8 mt-12 text-base font-inter text-black font-medium">Logiciel de gestion scolaire
+                    tout-en-un, pensé pour les établissements modernes</h1>
+                <p class="mt-5 text-4xl font-bold leading-tight text-black sm:text-5xl lg:text-6xl font-pj">
+                    Diriger une école n'a jamais été aussi
+                    <span class="relative inline-flex ">
+                        <span
+                            class="bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] blur-lg filter opacity-30 w-full h-full absolute inset-0"></span>
+                        <span class="relative bg-primary-light text-white w-full h-full absolute inset-0">Simple</span>
+                    </span>
+
+                </p>
+                <div class="mt-9 flex flex-col sm:flex-row sm:space-x-5">
+                    <a href="#"
+                        class="inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white bg-gray-900 rounded-xl transition hover:bg-gray-600 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                        <span class="material-icons align-middle mr-3">shopping_cart</span>Essayer gratuitement
+                    </a>
+                    <a href="#"
+                        class="inline-flex bg-white items-center justify-center px-6 py-3 mt-4 sm:mt-0 text-lg font-bold   border-2 border-gray-400 rounded-xl transition hover:bg-gray-900  text-primary-light text-black">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 18 18">
+                            <path
+                                d="M8.18 13.43C6.86 14.39 5 13.45 5 11.81V5.44C5 3.80 6.86 2.86 8.18 3.82L12.54 7.01C13.63 7.81 13.63 9.44 12.54 10.24L8.18 13.43Z"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Voir la démo
+                    </a>
+                </div>
+                <p class="mt-8 text-base font-inter text-black font-medium">Dirigez. Enseignez. Inspirez. On s'occupe du
+                    reste.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="sidebar-backdrop" class="fixed bg-black bg-opacity-80 inset-0 z-[777] hidden">
+        <!-- Mobile Sidebar -->
+        <div id="mobile-menu"
+            class="fixed inset-y-0 top-0 left-0 w-screen z-40  backdrop-blur-lg transition-transform duration-300 ease-in-out">
+            <div class="flex justify-between items-center p-4 ">
+                <img src="./img/logo.png" alt="Greatfy" class="h-16 w-auto" />
+                <button id="close-menu" onclick="window.location.href='/'"
+                    class="text-white h-16 w-16 p-2 rounded-full  focus:ring-2 focus:ring-primary-light"
+                    aria-label="Fermer le menu">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <nav class="py-4" aria-label="Navigation mobile">
+                <a href="#" class="block py-3  m-5 px-6 text-white hover:bg-gray-700 flex items-center"
+                    aria-current="page">
+                    <span class="material-icons mr-3">home</span>Accueil
+                </a>
+                <a href="#services" class="block  m-5 py-3 px-6 text-white hover:bg-gray-700 flex items-center">
+                    <span class="material-icons mr-3">design_services</span>Services
+                </a>
+                <a href="#products" class="block  m-5 py-3 px-6 text-white hover:bg-gray-700 flex items-center">
+                    <span class="material-icons mr-3">shopping_bag</span>Produits
+                </a>
+                <a href="#promotions" class="block m-5  py-3 px-6 text-white hover:bg-gray-700 flex items-center">
+                    <span class="material-icons mr-3">local_offer</span>Promotions
+                </a>
+                <a href="#about" class="block py-3  m-5 px-6 text-white hover:bg-gray-700 flex items-center">
+                    <span class="material-icons mr-3">info</span>À propos
+                </a>
+                <button
+                    class="px-4 m-6 py-2 w-[380px] h-16 bg-primary-light text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
+                    <!-- panier ecommence material icon import-->
+                    <span class="material-icons align-middle mr-3">shopping_cart</span>
+                    Essayer gratuitement
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contenu supplémentaire -->
+    <div class=" overflow-hidden">
+        <div class="relative overflow-hidden">
+            <div class="absolute inset-0 h-2/3 bg-gray-50"></div>
+            <div class="relative mx-auto overflow-hidden">
+                <div class="lg:mx-auto">
+                    <img class="transform scale-110" src="./img/image.png" alt="Image présentation" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="relative isolate overflow-hidden py-24 sm:py-32 bg-gradient-to-b from-gray-50 to-white">
+    <!-- Background elements -->
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-y-0 right-1/2 -z-10 w-[200%] skew-x-[-30deg] bg-white shadow-xl shadow-gray-200/50 sm:right-1/2 sm:skew-x-0 md:right-2/3"></div>
+        <div class="absolute left-0 top-0 -z-20 h-1/3 w-full rounded-b-full bg-gradient-to-r from-primary-light/10 to-primary/10 blur-3xl"></div>
+        <div class="absolute right-0 bottom-0 -z-20 h-1/3 w-full rounded-t-full bg-gradient-to-l from-primary-light/10 to-primary/10 blur-3xl"></div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in [animation-fill-mode:both] [animation-delay:200ms]">
+                Qu'est-ce que <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Kela+</span> ?
+            </h2>
+            <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-primary-light mx-auto mb-6 rounded-full animate-grow [animation-fill-mode:both] [animation-delay:400ms]"></div>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in [animation-fill-mode:both] [animation-delay:600ms]">
+                Découvrez Kela+ à travers cette vidéo de présentation qui vous montrera son fonctionnement innovant et comment il peut transformer votre expérience.
+            </p>
+        </div>
+
+        <!-- Enhanced 3D Video Component -->
+        <div class="[&_[x-cloak]]:hidden" x-data="{ modalOpen: false }">
+            <style>
+                .video-thumbnail-container {
+                    perspective: 1200px;
+                    max-width: 900px;
+                    margin: 0 auto;
+                }
+                .video-thumbnail-wrapper {
+                    position: relative;
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    transform-style: preserve-3d;
+                }
+                .video-thumbnail {
+                    border-radius: 1.5rem;
+                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    backface-visibility: hidden;
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 16/9;
+                    object-fit: cover;
+                }
+                .video-thumbnail-container:hover .video-thumbnail-wrapper {
+                    transform: rotateY(10deg) rotateX(3deg) scale(1.02);
+                }
+                .video-thumbnail-container:hover .video-thumbnail {
+                    box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.2);
+                }
+                .play-button {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 80px;
+                    height: 80px;
+                    background: rgba(255, 255, 255, 0.9);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                    backdrop-filter: blur(4px);
+                }
+                .play-button svg {
+                    width: 30px;
+                    height: 30px;
+                    margin-left: 4px;
+                }
+                .video-thumbnail-container:hover .play-button {
+                    transform: translate(-50%, -50%) scale(1.1) translateZ(30px);
+                    background: rgba(255, 255, 255, 1);
+                }
+                .video-thumbnail-container::before {
+                    content: '';
+                    position: absolute;
+                    inset: -10px;
+                    background: linear-gradient(45deg, #4f46e5, #7c3aed, #9333ea);
+                    z-index: -1;
+                    filter: blur(20px);
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    border-radius: 1.5rem;
+                }
+                .video-thumbnail-container:hover::before {
+                    opacity: 0.4;
+                }
+                
+                @media (max-width: 768px) {
+                    .video-thumbnail-container {
+                        perspective: 800px;
+                    }
+                    .play-button {
+                        width: 60px;
+                        height: 60px;
+                    }
+                    .play-button svg {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            </style>
+
+            <!-- Video thumbnail with enhanced 3D effect -->
+            <div class="video-thumbnail-container px-4 sm:px-0 animate-float [animation-fill-mode:both] [animation-delay:800ms]">
+                <button 
+                    class="video-thumbnail-wrapper w-full h-full focus:outline-none" 
+                    @click="modalOpen = true" 
+                    aria-controls="modal" 
+                    aria-label="Regarder la vidéo de présentation"
+                >
+                    <img 
+                        class="video-thumbnail bg-white"
+                        src="./img/image.png" 
+                        alt="Présentation vidéo de Kela+" 
+
+                    />
+                    <div class="play-button">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5V19L19 12L8 5Z" fill="#4F46E5"/>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Modal backdrop -->
+            <div
+                class="fixed inset-0 z-[99999] bg-black/80 backdrop-blur-sm transition-opacity"
+                x-show="modalOpen"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition ease-out duration-100"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0" 
+                aria-hidden="true"
+                x-cloak
+            ></div>
+
+            <!-- Modal dialog -->
+            <div
+                id="modal"
+                class="fixed inset-0 z-[99999] flex px-4 md:px-6 py-6"
+                role="dialog"
+                aria-modal="true"
+                x-show="modalOpen"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-90"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-out duration-200"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-90"
+                x-cloak
+            >
+                <div class="max-w-6xl mx-auto h-full flex items-center w-full">
+                    <div class="w-full max-h-full rounded-2xl shadow-2xl aspect-video bg-black overflow-hidden relative" @click.outside="modalOpen = false" @keydown.escape.window="modalOpen = false">
+                        <button 
+                            @click="modalOpen = false" 
+                            class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+                            aria-label="Fermer la vidéo"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                        <video 
+                            x-init="$watch('modalOpen', value => value ? $el.play() : $el.pause())" 
+                            width="1920" 
+                            height="1080" 
+                            loop 
+                            controls
+                            class="w-full h-full object-cover"
+                        >
+                            <source src="https://cruip-tutorials.vercel.app/modal-video/video.mp4" type="video/mp4" />
+                            Votre navigateur ne supporte pas les vidéos.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Contenu supplémentaire -->
+    <section class="min-h-screen w-screen md:px-8 xl:px-20 text-white bg-primary flex items-center ">
+        <div class="flex container flex-col md:flex-row items-center md:items-start gap-16 w-full">
+            <!-- Left Side -->
+            <div class="w-full md:w-1/2 relative p-6 sm:px-28 md:p-0">
+                <div class="text-white p-6 pl-10 pr-20 sm:pl-10 lg:pr-20">
+                    <!-- Vertical Text -->
+                    <div
+                        class="absolute -left-4 top-16 sm:left-16 top-20 sm:top-24 md:-left-12 xl:-left-16 md:top-16 xl:top-24 rotate-[-90deg] text-sm tracking-widest flex flex-row justify-start gap-2">
+                        <div class="xl:w-16 md:w-10 sm:w-8 w-8 h-[2px] bg-white mt-2 mx-auto"></div>
+                        <p>Nos outils</p>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h2 class="text-3xl md:text-4xl xl:text-6xl font-bold leading-tight">
+                        Explore nos outils et organise vous avec <span>Kela+</span>
+                    </h2>
+                </div>
+
+                <p class="p-3 text-white text-lg leading-relaxed">
+                    Tous nos outils et facilités votre gestion avec une experiance utilisation fluide et un design
+                    intuitif.
+                    et facilites vous la tache et gere mieux votre établissement avec les modules de gestion de votre
+                    choix.
+                    avec kela + vous pouvez facilement organiser votre établissement et vous aider à vous organiser et à
+                    vous centrer sur les activités que vous avez a faire .
+                    nous nous occupent du reste.
+
+                </p>
+                <span class="py-4 px-2 space-x-2 rounded-lg   ">
+                    <button
+                        class="px-4 mt-4 py-2 bg-black text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
+                        <span class="material-icons align-middle mr-3">shopping_cart</span>Essayer gratuitement
+                    </button>
+
+                </span>
+
+            </div>
+
+            <!-- Right Side (Static Icons Grid) -->
+            <div class="w-full md:w-1/2 flex justify-center items-center">
+                <div class="grid grid-cols-3 md:grid-cols-3 gap-4">
+
+
+                    <!-- Static Icons -->
+                    <div class="text-center">
+                        <div class="p-4 bg-secondary rounded-lg flex flex-col justify-center items-center">
+                            <span class="text-4xl">
+                                <img class="h-26 rounded-lg " src="./img/logo_modul/pay.jpg" alt="kela plus payement">
+                            </span>
+                            <p class="text-xs mt-2">payement</p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Static Icons -->
+                    <div class="text-center">
+                        <div class="p-4 bg-secondary rounded-lg flex flex-col justify-center items-center">
+                            <span class="text-4xl">
+                                <img class="h-26 rounded-lg " src="./img/logo_modul/pay.jpg" alt="kela plus payement">
+                            </span>
+                            <p class="text-xs mt-2">payement</p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Static Icons -->
+                    <div class="text-center">
+                        <div class="p-4 bg-secondary rounded-lg flex flex-col justify-center items-center">
+                            <span class="text-4xl">
+                                <img class="h-26 rounded-lg " src="./img/logo_modul/pay.jpg" alt="kela plus payement">
+                            </span>
+                            <p class="text-xs mt-2">payement</p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Static Icons -->
+                    <div class="text-center">
+                        <div class="p-4 bg-secondary rounded-lg flex flex-col justify-center items-center">
+                            <span class="text-4xl">
+                                <img class="h-26 rounded-lg " src="./img/logo_modul/pay.jpg" alt="kela plus payement">
+                            </span>
+                            <p class="text-xs mt-2">payement</p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Static Icons -->
+                    <div class="text-center">
+                        <div class="p-4 bg-secondary rounded-lg flex flex-col justify-center items-center">
+                            <span class="text-4xl">
+                                <img class="h-26 rounded-lg " src="./img/logo_modul/pay.jpg" alt="kela plus payement">
+                            </span>
+                            <p class="text-xs mt-2">payement</p>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Static Icons -->
+                    <div class="text-center">
+                        <div class="p-4 bg-secondary rounded-lg flex flex-col justify-center items-center">
+                            <span class="text-4xl">
+                                <img class="h-26 rounded-lg " src="./img/logo_modul/pay.jpg" alt="kela plus payement">
+                            </span>
+                            <p class="text-xs mt-2">payement</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- pricing section -->
+    <div class="space-y-5 px-8 py-12">
+            <div class="flex justify-center items-center">
+                <div class="no-scrollbar overflow-hidden">
+                    <div class="flex no-scrollbar gap-4 justify-start items-start overflow-x-auto">
+                        <div class="text-center">
+                            <h2 class="text-4xl font-bold text-gray-800 mb-4">Nos Tarifs Kela+</h2>
+                            <div class="w-20 h-1 bg-primary-light mx-auto mb-6"></div>
+                            <p class="text-xl text-gray-600 mx-auto max-w-3xl">
+                                Découvrez nos offres adaptées à chaque type d'établissement scolaire. Choisissez la formule qui correspond le mieux à vos besoins ou contactez-nous pour une solution personnalisée.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Forfait Annuel -->
+        <div class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative">
+            <div class="h-full">
+                <div class="h-full z-10 relative">
+                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                        <div class="flex justify-between flex-col">
+                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                                <span>Forfait Annuel</span>
+                            </div>
+                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                                <div class="flex items-center align-bottom">
+                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900">
+                                        <span>139 900</span>
+                                    </div>
+                                    <span class="pt-1.5">FCFA</span>
+                                </div>
+                                <div class="text-base">1ère année (avec 1 mois gratuit)</div>
+                                <div class="text-sm text-gray-600">2ème année: 250 000 FCFA</div>
+                            </div>
+                            <div class="">
+                                <ul class="space-y-2 pt-8">
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>1 mois d'essai gratuit inclus</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Paiement en une fois ou 2 tranches</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Accès complet à toutes les fonctionnalités</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <a href="/billing" type="button" target="_blank" class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer">
+                                <span class="w-full font-semibold text-base">Choisir ce forfait</span>
+                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensualité par Cycle -->
+        <div class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative">
+            <div class="h-full">
+                <div class="h-full z-10 relative">
+                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                        <div class="flex justify-between flex-col">
+                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                                <span>Mensualité par Cycle</span>
+                                <svg class="h-6 w-6 animate-ping-slow text-gray-500" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M30.5 25C30.5 28.0376 28.0376 30.5 25 30.5C21.9624 30.5 19.5 28.0376 19.5 25C19.5 21.9624 21.9624 19.5 25 19.5C28.0376 19.5 30.5 21.9624 30.5 25Z" stroke="currentColor" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M38.75 25C38.75 32.5939 32.5939 38.75 25 38.75C17.4061 38.75 11.25 32.5939 11.25 25C11.25 17.4061 17.4061 11.25 25 11.25C32.5939 11.25 38.75 17.4061 38.75 25Z" stroke="currentColor" stroke-opacity="0.4" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M47.5 25C47.5 37.4264 37.4264 47.5 25 47.5C12.5736 47.5 2.5 37.4264 2.5 25C2.5 12.5736 12.5736 2.5 25 2.5C37.4264 2.5 47.5 12.5736 47.5 25Z" stroke="currentColor" stroke-opacity="0.1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                                <div class="flex items-center align-bottom">
+                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900">
+                                        <span>10 000</span>
+                                    </div>
+                                    <span class="pt-1.5">FCFA/mois</span>
+                                </div>
+                                <div class="text-base">Tous les cycles</div>
+                            </div>
+                            <div class="">
+                                <ul class="space-y-2 pt-8">
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Crèche/Garderie/Préscolaire</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Cycle Primaire</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Collège/Lycée</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <a href="/billing" type="button" target="_blank" class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer">
+                                <span class="w-full font-semibold text-base">Choisir cette option</span>
+                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensualité par Élève -->
+        <div class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative">
+            <div class="h-full">
+                <div class="h-full z-10 relative">
+                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                        <div class="flex justify-between flex-col">
+                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                                <span>Mensualité par Élève</span>
+                            </div>
+                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                                <div class="flex items-center align-bottom">
+                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900">
+                                        <span>50-100</span>
+                                    </div>
+                                    <span class="pt-1.5">FCFA/élève</span>
+                                </div>
+                                <div class="text-base">par mois</div>
+                            </div>
+                            <div class="">
+                                <ul class="space-y-2 pt-8">
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>0-299 élèves: 100 FCFA/élève</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>300+ élèves: 50 FCFA/élève</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Solution économique pour grandes structures</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <a href="/billing" type="button" target="_blank" class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer">
+                                <span class="w-full font-semibold text-base">Choisir cette option</span>
+                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Écoles Trimestre -->
+        <div class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative lg:col-span-2">
+            <div class="h-full">
+                <div class="h-full z-10 relative lg:flex lg:justify-between lg:w-full lg:pr-8 lg:items-center">
+                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                        <div class="flex justify-between flex-col">
+                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                                <span>Trimestrialité</span>
+                            </div>
+                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                                <div class="flex items-center align-bottom">
+                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900">
+                                        <span>35 000 FCFA</span>
+                                    </div>
+                                    <span class="pt-1.5">par cycle/trimestre</span>
+                                </div>
+
+                                <div class="flex items-center align-bottom">
+                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900">
+                                        <span>150-200</span>
+                                    </div>
+                                    <span class="pt-1.5">FCFA/élève </span>
+                                </div>
+    
+                            
+
+                                
+                            </div>
+                            <div class="lg:hidden">
+                                <ul class="space-y-2 pt-8 lg:pt-0">
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Crèche/Garderie/Préscolaire</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Cycle Primaire</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-gray-600">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Cycle Collège/Lycée</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-gray-600">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>0-299 élèves: 200 FCFA/élève</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <a href="/billing" type="button" target="_blank"
+                                class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer">
+                                <span class="w-full font-semibold text-base">Choisir cette option</span>
+                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden lg:block">
+                        <ul class="space-y-2 pt-8 lg:pt-0">
+                            <li class="flex items-center font-medium space-x-2 text-black">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <span>Crèche/Garderie/Préscolaire</span>
+                            </li>
+                            <li class="flex items-center font-medium space-x-2 text-black">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <span>Cycle Primaire</span>
+                            </li>
+                            <li class="flex items-center font-medium space-x-2 text-gray-600">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <span>Cycle Collège/Lycée</span>
+                            </li>
+                            <li class="flex items-center font-medium space-x-2 text-gray-600">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <span>300+ élèves: 150 FCFA/élève</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Écoles Publiques -->
+        <div class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative sm:col-span-2 lg:col-span-1">
+            <div class="h-full">
+                <div class="h-full z-10 relative">
+                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                        <div class="flex justify-between flex-col">
+                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                                <span>Écoles Publiques</span>
+                            </div>
+                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                                <div class="flex items-center align-bottom">
+                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900">
+                                        <span>150</span>
+                                    </div>
+                                    <span class="pt-1.5">FCFA/élève</span>
+                                </div>
+                                <div class="text-base">par an</div>
+                            </div>
+                            <div class="">
+                                <ul class="space-y-2 pt-8">
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Offre spéciale pour établissements publics</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Tarif unique par élève</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                        <span>Accès complet à toutes les fonctionnalités</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <a href="/billing" type="button" target="_blank" class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer">
+                                <span class="w-full font-semibold text-base">Choisir cette option</span>
+                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+            <div class="demo-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            
+                        <div class="flex justify-center items-center  lg:col-span-4">
+                            <div class="no-scrollbar overflow-hidden">
+                                <div class="flex no-scrollbar gap-4 justify-start items-start overflow-x-auto">
+                                    <div class="text-center">
+                                        <h2 class="text-4xl font-bold text-gray-800 mb-4">Modules Complémentaires & Services</h2>
+                                        <div class="w-20 h-1 bg-primary-light mx-auto mb-6"></div>
+                                        <p class="text-xl text-gray-600 mx-auto max-w-3xl">
+                                            Découvrez nos offres adaptées à chaque type d'établissement scolaire. Choisissez la formule qui correspond le mieux à vos besoins ou contactez-nous pour une solution personnalisée.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- Modules Complémentaires -->
+                <div class="rounded-[30px] md:rounded-[36px]  overflow-hidden   border-gray-200 p-8 relative sm:col-span-2 lg:col-span-4">
+                    <div class="h-full">
+                        <div class="flex flex-col lg:flex-row justify-between h-full space-y-5 lg:space-y-0 lg:space-x-8">
+                            <div class="flex-1">
+                            
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="border border-gray-200 rounded-xl p-9">
+                                        <h3 class="font-bold text-lg text-gray-900 mb-3">KelaPlus Document</h3>
+                                        <p class="text-gray-600 mb-4">Gestion avancée des documents scolaires</p>
+                                        <div class="text-2xl font-bold text-gray-900">15 000 FCFA</div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-xl p-9">
+                                        <h3 class="font-bold text-lg text-gray-900 mb-3">KelaPlus Carte</h3>
+                                        <p class="text-gray-600 mb-4">Cartes étudiantes personnalisées</p>
+                                        <div class="text-2xl font-bold text-gray-900">800 FCFA/élève</div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-xl p-9">
+                                        <h3 class="font-bold text-lg text-gray-900 mb-3">Examens Inter-Écoles</h3>
+                                        <p class="text-gray-600 mb-4">Organisation d'examens communs</p>
+                                        <div class="text-2xl font-bold text-gray-900">100-150 FCFA/élève</div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-200 rounded-xl p-9">
+                                        <h3 class="font-bold text-lg text-gray-900 mb-3">Examens Blancs</h3>
+                                        <p class="text-gray-600 mb-4">Préparation aux examens nationaux</p>
+                                        <div class="text-2xl font-bold text-gray-900">15 000-20 000 FCFA</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="lg:w-1/3 flex flex-col justify-between">
+                                <div class="bg-[#d058f6]/10 border border-[#d058f6] rounded-xl p-5">
+                                    <h3 class="font-bold text-lg text-[#d058f6] mb-3">Solution Personnalisée</h3>
+                                    <p class="text-[#d058f6] mb-4">
+                                        Besoin d'une solution sur mesure pour votre établissement? 
+                                        Notre équipe vous propose un devis gratuit adapté à vos besoins spécifiques.
+                                    </p>
+                                    <ul class="space-y-2 text-[#d058f6] mb-6">
+                                        <li class="flex items-start space-x-2">
+                                            <svg class="h-5 w-5 text-[#d058f6] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            <span>Analyse de vos besoins</span>
+                                        </li>
+                                        <li class="flex items-start space-x-2">
+                                            <svg class="h-5 w-5 text-[#d058f6] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            <span>Configuration personnalisée</span>
+                                        </li>
+                                        <li class="flex items-start space-x-2">
+                                            <svg class="h-5 w-5 text-[#d058f6] mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            <span>Formation de votre personnel</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="pt-4">
+                                    <a href="/devis-personnalise" type="button" class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-[#d058f6] text-white py-4 px-5 rounded-2xl cursor-pointer w-full">
+                                        <span class="w-full font-semibold text-base">Demander un devis</span>
+                                        <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+    </div>
+
+
+    <!-- Testimonials -->
+
+<!-- Testimonials Section -->
+
+    <!-- call to action -->
+
+    <div class=" py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div
+                class="relative isolate overflow-clip bg-primary-light px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+                <div aria-hidden="true"
+                    class="absolute right-0 top-0 -z-10 aspect-square w-full max-w-3xl translate-x-3/4 rounded-full bg-pink-500/60 blur-[10rem] lg:-top-[40rem] lg:left-1/2 lg:-translate-x-1/2">
+                </div>
+                <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-24 lg:text-start">
+                    <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Comment obtenir kela+ ?
+                    </h2>
+                    <p class="mt-6 text-base text-gray-300">Pour obtenir kela+, il vous suffit de vous inscrire sur
+                        notre site et de suivre les instructions.</p>
+                    <div class="mt-10 flex items-start lg:justify-start justify-center p-x-6  ">
+
+                        <a href="#"
+                            class=" flex items-center justify-center px-8 md:py-3 py-4 text-sm font-bold text-white bg-gray-900 rounded-xl transition hover:bg-gray-600 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                            <span class="material-icons align-middle mr-3">shopping_cart</span>Essayer gratuitement
+                        </a>
+                    </div>
+                </div>
+                <div class="relative mt-16 h-80 lg:mt-8 lg:h-auto">
+                    <img width="1920" height="1139"
+                        class="absolute left-0 top-0 w-[58rem] max-w-none rounded-2xl bg-white/5 ring-4 ring-white/10 lg:top-14"
+                        src="./img/call_action.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+
+ 
+
+
+    <footer
+        class=" w-full mt-10 md:px-[50px] lg:px-24 sm:px-16 px-6 py-14 bg-[#191a23] rounded-tl-[15px] rounded-tr-[15px] max-w-[1440px] mx-auto  ">
+        <div class="flex flex-col md:items-stretch items-center md:gap-0 gap-5">
+            <div
+                class="contents  md:flex  mx-auto w-full  md:flex-row flex-col md:justify-between  items-center gap0-40 ">
+                <ul
+                    class="order-2 md:order-none flex flex-col md:flex-row justify-start items-center gap-3 md:gap-5 lg:gap-10 text-white text-base lg:text-lg font-normal  underline">
+                    <li class="cursor-pointer">About us</li>
+                    <li class="cursor-pointer">Services</li>
+                    <li class="cursor-pointer">Use Cases</li>
+                    <li class="cursor-pointer">Pricing</li>
+                    <li class="cursor-pointer">Blog</li>
+                </ul>
+                <div class="order-5 md:order-none  flex justify-start items-start gap-5 md:gap-3 lg:gap-5"><svg
+                        class="w-8 h-8 cursor-pointer" viewBox="0 0 30 30" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="15" cy="15" r="15" fill="white"></circle>
+                        <path d="M8.22178 22.0586H11.3059V12.0742H8.22178V22.0586Z" fill="black"></path>
+                        <path
+                            d="M7.94141 8.88672C7.94141 9.87109 8.7358 10.668 9.76384 10.668C10.7451 10.668 11.5395 9.87109 11.5395 8.88672C11.5395 7.90234 10.7451 7.05859 9.76384 7.05859C8.7358 7.05859 7.94141 7.90234 7.94141 8.88672Z"
+                            fill="black"></path>
+                        <path
+                            d="M19.8106 22.0586H22.9414V16.5742C22.9414 13.9023 22.3339 11.793 19.2031 11.793C17.7078 11.793 16.6797 12.6367 16.2592 13.4336H16.2124V12.0742H13.2685V22.0586H16.3526V17.1367C16.3526 15.8242 16.5863 14.5586 18.2218 14.5586C19.8106 14.5586 19.8106 16.0586 19.8106 17.1836V22.0586Z"
+                            fill="black"></path>
+                    </svg><svg class="w-8 h-8 cursor-pointer" viewBox="0 0 30 30" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M30 15.0913C30 6.75456 23.2863 0 15 0C6.71371 0 0 6.75456 0 15.0913C0 22.6369 5.44355 28.9047 12.6411 30V19.4726H8.83064V15.0913H12.6411V11.8053C12.6411 8.03245 14.879 5.90264 18.2661 5.90264C19.9597 5.90264 21.6532 6.2069 21.6532 6.2069V9.91886H19.7782C17.9032 9.91886 17.2984 11.0751 17.2984 12.2921V15.0913H21.4718L20.8065 19.4726H17.2984V30C24.496 28.9047 30 22.6369 30 15.0913Z"
+                            fill="white"></path>
+                    </svg><svg class="w-8 h-8 cursor-pointer" viewBox="0 0 30 30" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="15" cy="15" r="15" fill="white"></circle>
+                        <path
+                            d="M21.9961 11.4915C22.6854 10.9745 23.3058 10.3541 23.7884 9.63028C23.168 9.90602 22.4442 10.1128 21.7204 10.1818C22.4786 9.73369 23.0301 9.04435 23.3058 8.18267C22.6165 8.59628 21.8238 8.90648 21.031 9.07881C20.3417 8.35501 19.4111 7.94141 18.3771 7.94141C16.378 7.94141 14.758 9.56135 14.758 11.5604C14.758 11.8362 14.7925 12.1119 14.8614 12.3876C11.8628 12.2153 9.1744 10.7677 7.38212 8.59628C7.07192 9.11328 6.89959 9.73369 6.89959 10.423C6.89959 11.6638 7.51999 12.7668 8.51953 13.4216C7.93359 13.3872 7.34766 13.2493 6.86512 12.9736V13.008C6.86512 14.7659 8.10593 16.2135 9.76034 16.5581C9.48461 16.6271 9.13994 16.696 8.82973 16.696C8.58847 16.696 8.38166 16.6615 8.1404 16.6271C8.58847 18.0747 9.93267 19.1087 11.5182 19.1432C10.2773 20.1082 8.72633 20.6942 7.03745 20.6942C6.72725 20.6942 6.45152 20.6597 6.17578 20.6252C7.76126 21.6592 9.65694 22.2452 11.725 22.2452C18.3771 22.2452 21.9961 16.7649 21.9961 11.974C21.9961 11.8017 21.9961 11.6638 21.9961 11.4915Z"
+                            fill="black"></path>
+                    </svg></div>
+            </div>
+            <div class="contents md:flex  mt-16  md:flex-row flex-col justify-between items-center">
+                <div
+                    class="order-3 md:order-none inline-flex flex-col justify-start items-center md:items-start gap-3  md:gap-7">
+                    <h3 class="px-1.5 bg-[#d058f6] rounded-md text-black text-xl font-medium ">Contact us:</h3>
+                    <p class="flex flex-col justify-start md:items-start items-center gap-2 md:gap-5"><span
+                            class=" text-white text-lg font-normal ">Email: info@positivus.com</span><span
+                            class=" text-white text-lg font-normal ">Phone: 555-567-8901</span><span
+                            class=" text-white md:text-left text-center text-lg font-normal ">Address: 1234 Main
+                            St<br>Moonstone City, Stardust State 12345</span></p>
+                </div>
+                <div
+                    class="order-4 md:order-none p-6  md:px-10 md:py-14 bg-[#292a32] rounded-2xl flex flex-col items-stretch lg:w-auto w-full lg:flex-row  justify-start lg:items-start gap-5 overflow-hidden">
+                    <input type="text"
+                        class="0w-72 px-4 md:px-9 py-5 rounded-2xl outline outline-1 bg-[#292a32] outline-offset-[-1px] outline-white  overflow-hidden text-white text-lg font-normal "
+                        placeholder="Enter your email"><button
+                        class="px-3 md:px-9 py-5 bg-[#d058f6] rounded-2xl text-center  text-black text-xl font-normal  leading-7">Subscribe
+                        to news</button></div>
+            </div>
+        </div>
+        <div class="mt-12 border-t pt-8 flex justify-start items-start gap-10">
+            <p class="text-white text-sm font-normal  leading-7">© <script>document.write(new Date().getFullYear())</script> Positivus. All Rights Reserved.</p><a
+                class="cursor-pointer text-white text-sm font-normal  underline leading-7">Privacy Policy</a>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Scripts -->
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const navbar = document.getElementById('navbar');
+
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+
+            mobileMenu.classList.toggle('hidden', !isMenuOpen);
+            sidebarBackdrop.classList.toggle('hidden', !isMenuOpen);
+
+            // Empêche de scroller le body sur téléphone quand le menu est ouvert
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+
+            menuToggle.setAttribute('aria-expanded', isMenuOpen);
+        }
+
+        // ✅ Ouvre et ferme le menu mobile
+        menuToggle.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+        sidebarBackdrop.addEventListener('click', toggleMenu);
+
+        // ✅ Ferme le menu avec touche Échap
+        mobileMenu.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) toggleMenu();
+        });
+
+        // ✅ Ferme automatiquement si on passe en mode desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                isMenuOpen = false;
+                mobileMenu.classList.add('hidden');
+                sidebarBackdrop.classList.add('hidden');
+                document.body.style.overflow = '';
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // ✅ Gère l’apparition/disparition de la navbar au scroll (aussi sur mobile)
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('nav-scroll');
+            } else {
+                navbar.classList.remove('nav-scroll');
+            }
+
+            // Masque la navbar uniquement si menu fermé
+            if (!isMenuOpen) {
+                navbar.style.transform =
+                    window.scrollY > lastScrollY && window.scrollY > 100
+                        ? 'translateY(-100%)'
+                        : 'translateY(0)';
+            }
+
+            lastScrollY = window.scrollY;
+        });
+    </script>
+
+    <script>
+        const video = document.getElementById("bg-video");
+
+        const startTime = 0;
+        const endTime = 2;
+
+        video.addEventListener("loadedmetadata", () => {
+            video.currentTime = startTime;
+            video.play(); // Assure le démarrage
+        });
+
+        video.addEventListener("timeupdate", () => {
+            if (video.currentTime >= endTime - 0.05) {
+                video.classList.add("fade-out");
+
+                // Stoppe la vidéo pour éviter conflit de frames
+                video.pause();
+
+                setTimeout(() => {
+                    video.currentTime = startTime;
+
+                    // Enlève le fade et relance
+                    video.classList.remove("fade-out");
+                    video.classList.add("fade-in");
+
+                    video.play();
+                }, 300); // Temps de fondu
+            }
+        });
+
+        // En cas de redémarrage (facultatif)
+        video.addEventListener("ended", () => {
+            video.currentTime = startTime;
+            video.play();
+        });
+    </script>
+
+
+</body>
+
+</html>
