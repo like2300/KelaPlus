@@ -10,47 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="./style/styles.css">
-      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <style>
-        @keyframes fadeIn {
-            from {
-                opacity: 0.4;
-                transform: scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .animate-fade {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        .testimonial-card {
-            transition: all 0.5s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .active-dot {
-            transform: scale(1.4);
-            background-color: #d058f6;
-        }
-
-        .nav-button {
-            transition: all 0.3s ease;
-        }
-
-        .nav-button:hover {
-            background-color:#d058f6;
-            color: white;
-        }
-    </style>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -64,8 +24,46 @@
             }
         }
     </script>
-
     <style>
+            @keyframes fadeIn {
+                from {
+                    opacity: 0.4;
+                    transform: scale(0.95);
+                }
+    
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+    
+            .animate-fade {
+                animation: fadeIn 0.8s ease-in-out;
+            }
+    
+            .testimonial-card {
+                transition: all 0.5s ease;
+            }
+    
+            .testimonial-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+    
+            .active-dot {
+                transform: scale(1.4);
+                background-color: #d058f6;
+            }
+    
+            .nav-button {
+                transition: all 0.3s ease;
+            }
+    
+            .nav-button:hover {
+                background-color:#d058f6;
+                color: white;
+            }
+     
         .video-fade {
             transition: opacity 0.6s ease-in-out;
         }
@@ -120,23 +118,21 @@
             animation: float 6s ease-in-out infinite;
         }
     </style>
-
-
-
 </head>
 
 <body class="bg-gray-50 w-screen h-screen overflow-x-hidden">
 
     <!-- Vidéo uniquement sur la section principale -->
-    <section class="relative h-[80%] md:h-screen  flex items-center justify-center text-center overflow-hidden">
+    <section class="relative h-[80%] md:h-screen backdrop-blur-lg flex items-center justify-center text-center overflow-hidden">
         <video id="bg-video" autoplay muted playsinline
             class="absolute top-0 left-0 w-full h-full object-cover z-0 video-fade fade-in">
             <source src="./videos/bg.mp4" type="video/mp4">
         </video>
-
-        <!-- Navbar -->
+        <!-- 🔧 Flou sur la vidéo -->
+        <div class="absolute inset-0 z-[5]  backdrop-blur-lg"></div>
+                <!-- Navbar -->
         <nav id="navbar"
-            class="fixed top-0 w-screen z-50 overflow-hidden transition-all duration-300 ease-in-out   backdrop-blur-lg">
+            class="fixed top-0 w-screen z-50 overflow-hidden transition-all duration-300 ease-in-out backdrop-blur-lg">
             <div class="container mx-auto px-4 py-3">
                 <div class="flex items-center justify-between">
                     <!-- Logo -->
@@ -169,7 +165,7 @@
         </nav>
 
         <!-- Contenu principal sur vidéo -->
-        <div class="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
             <div class="max-w-2xl  mt-12 mx-auto flex-col flex justify-center items-center text-white">
                 <h1 class="md:mt-8 mt-12 text-base font-inter text-black font-medium">Logiciel de gestion scolaire
                     tout-en-un, pensé pour les établissements modernes</h1>
@@ -255,15 +251,14 @@
         </div>
     </div>
 
-    <section id="about" class="relative isolate overflow-hidden py-24 sm:py-32 bg-gradient-to-b from-gray-50 to-white z-[999]">
+    <section id="about" class="bg-line relative isolate overflow-hidden py-24 sm:py-32 from-gray-50 to-white z-[999]">
     <!-- Background elements -->
     <div class="absolute inset-0 -z-10">
-        <div class="absolute inset-y-0 right-1/2 -z-10 w-[200%] skew-x-[-30deg] bg-white shadow-xl shadow-gray-200/50 sm:right-1/2 sm:skew-x-0 md:right-2/3"></div>
         <div class="absolute left-0 top-0 -z-20 h-1/3 w-full rounded-b-full bg-gradient-to-r from-primary-light/10 to-primary/10 blur-3xl"></div>
         <div class="absolute right-0 bottom-0 -z-20 h-1/3 w-full rounded-t-full bg-gradient-to-l from-primary-light/10 to-primary/10 blur-3xl"></div>
     </div>
 
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 ">
+    <div class=" mx-auto max-w-7xl px-6 lg:px-8 ">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in [animation-fill-mode:both] [animation-delay:200ms]">
                 Qu'est-ce que <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Kela+</span> ?
@@ -276,87 +271,7 @@
 
         <!-- Enhanced 3D Video Component -->
         <div class="[&_[x-cloak]]:hidden" x-data="{ modalOpen: false }">
-            <style>
-                .video-thumbnail-container {
-                    perspective: 1200px;
-                    max-width: 900px;
-                    margin: 0 auto;
-                }
-                .video-thumbnail-wrapper {
-                    position: relative;
-                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                    transform-style: preserve-3d;
-                }
-                .video-thumbnail {
-                    border-radius: 1.5rem;
-                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-                    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                    backface-visibility: hidden;
-                    width: 100%;
-                    height: auto;
-                    aspect-ratio: 16/9;
-                    object-fit: cover;
-                }
-                .video-thumbnail-container:hover .video-thumbnail-wrapper {
-                    transform: rotateY(10deg) rotateX(3deg) scale(1.02);
-                }
-                .video-thumbnail-container:hover .video-thumbnail {
-                    box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.2);
-                }
-                .play-button {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 80px;
-                    height: 80px;
-                    background: rgba(255, 255, 255, 0.9);
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-                    backdrop-filter: blur(4px);
-                }
-                .play-button svg {
-                    width: 30px;
-                    height: 30px;
-                    margin-left: 4px;
-                }
-                .video-thumbnail-container:hover .play-button {
-                    transform: translate(-50%, -50%) scale(1.1) translateZ(30px);
-                    background: rgba(255, 255, 255, 1);
-                }
-                .video-thumbnail-container::before {
-                    content: '';
-                    position: absolute;
-                    inset: -10px;
-                    background: linear-gradient(45deg, #4f46e5, #7c3aed, #9333ea);
-                    z-index: -1;
-                    filter: blur(20px);
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                    border-radius: 1.5rem;
-                }
-                .video-thumbnail-container:hover::before {
-                    opacity: 0.4;
-                }
-                
-                @media (max-width: 768px) {
-                    .video-thumbnail-container {
-                        perspective: 800px;
-                    }
-                    .play-button {
-                        width: 60px;
-                        height: 60px;
-                    }
-                    .play-button svg {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-            </style>
+           
 
             <!-- Video thumbnail with enhanced 3D effect -->
             <div class="video-thumbnail-container px-4 sm:px-0 animate-float [animation-fill-mode:both] [animation-delay:800ms]">
@@ -454,7 +369,7 @@
 
                     <!-- Main Heading -->
                     <h2 class="text-3xl md:text-4xl xl:text-6xl font-bold leading-tight">
-                        Explore nos outils et organise vous avec <span>Kela+</span>
+                        Explorez nos outils et organisez vous avec <span>Kela+</span>
                     </h2>
                 </div>
 
@@ -560,7 +475,7 @@
 
 
     <!-- pricing section -->
-    <div class="space-y-5 px-8 py-12">
+    <div class="space-y-5 px-8 py-12 bg-line ">
             <div class="flex justify-center items-center">
                 <div class="no-scrollbar overflow-hidden">
                     <div class="flex no-scrollbar gap-4 justify-start items-start overflow-x-auto">
@@ -918,31 +833,31 @@
             
 
                 <!-- Modules Complémentaires -->
-                <div class="rounded-[30px] md:rounded-[36px]  overflow-hidden   border-gray-200 pt-8 relative sm:col-span-2 lg:col-span-4">
+                <div class="   overflow-hidden   border-gray-200 pt-8 relative sm:col-span-2 lg:col-span-4">
                     <div class="h-full">
                         <div class="flex flex-col lg:flex-row justify-between h-full space-y-5 lg:space-y-0 lg:space-x-8">
                             <div class="flex-1">
                             
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <div class="border border-gray-200 rounded-xl p-9">
+                                    <div class="border bg-white border-gray-200 rounded-xl p-9">
                                         <h3 class="font-bold text-lg text-gray-900 mb-3">KelaPlus Document</h3>
                                         <p class="text-gray-600 mb-4">Gestion avancée des documents scolaires</p>
                                         <div class="text-2xl font-bold text-gray-900">15 000 FCFA</div>
                                     </div>
                                     
-                                    <div class="border border-gray-200 rounded-xl p-9">
+                                    <div class="border bg-white border-gray-200 rounded-xl p-9">
                                         <h3 class="font-bold text-lg text-gray-900 mb-3">KelaPlus Carte</h3>
                                         <p class="text-gray-600 mb-4">Cartes étudiantes personnalisées</p>
                                         <div class="text-2xl font-bold text-gray-900">800 FCFA/élève</div>
                                     </div>
                                     
-                                    <div class="border border-gray-200 rounded-xl p-9">
+                                    <div class="border bg-white border-gray-200 rounded-xl p-9">
                                         <h3 class="font-bold text-lg text-gray-900 mb-3">Examens Inter-Écoles</h3>
                                         <p class="text-gray-600 mb-4">Organisation d'examens communs</p>
                                         <div class="text-2xl font-bold text-gray-900">100-150 FCFA/élève</div>
                                     </div>
                                     
-                                    <div class="border border-gray-200 rounded-xl p-9">
+                                    <div class="border bg-white border-gray-200 rounded-xl p-9">
                                         <h3 class="font-bold text-lg text-gray-900 mb-3">Examens Blancs</h3>
                                         <p class="text-gray-600 mb-4">Préparation aux examens nationaux</p>
                                         <div class="text-2xl font-bold text-gray-900">15 000-20 000 FCFA</div>
@@ -1042,11 +957,14 @@
                 class="contents  md:flex  mx-auto w-full  md:flex-row flex-col md:justify-between  items-center gap0-40 ">
                 <ul
                     class="order-2 md:order-none flex flex-col md:flex-row justify-start items-center gap-3 md:gap-5 lg:gap-10 text-white text-base lg:text-lg font-normal  underline">
-                    <li class="cursor-pointer">About us</li>
-                    <li class="cursor-pointer">Services</li>
-                    <li class="cursor-pointer">Use Cases</li>
-                    <li class="cursor-pointer">Pricing</li>
-                    <li class="cursor-pointer">Blog</li>
+                    <li class="cursor-pointer"> Home 
+
+
+</li>
+                    <li class="cursor-pointer">Module</li>
+                    <li class="cursor-pointer">Promotions</li>
+                    <li class="cursor-pointer">Prix</li>
+                    <li class="cursor-pointer">À propos</li>
                 </ul>
                 <div class="order-5 md:order-none  flex justify-start items-start gap-5 md:gap-3 lg:gap-5"><svg
                         class="w-8 h-8 cursor-pointer" viewBox="0 0 30 30" fill="none"
@@ -1100,114 +1018,12 @@
 
 
 
-
-
-
-
-
-
-
+ 
     <!-- Scripts -->
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-        const navbar = document.getElementById('navbar');
 
-        let isMenuOpen = false;
+    <script src="./index.js"></script>
+    <script src="./app.js"></script>
 
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-
-            mobileMenu.classList.toggle('hidden', !isMenuOpen);
-            sidebarBackdrop.classList.toggle('hidden', !isMenuOpen);
-
-            // Empêche de scroller le body sur téléphone quand le menu est ouvert
-            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-
-            menuToggle.setAttribute('aria-expanded', isMenuOpen);
-        }
-
-        // ✅ Ouvre et ferme le menu mobile
-        menuToggle.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', toggleMenu);
-        sidebarBackdrop.addEventListener('click', toggleMenu);
-
-        // ✅ Ferme le menu avec touche Échap
-        mobileMenu.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && isMenuOpen) toggleMenu();
-        });
-
-        // ✅ Ferme automatiquement si on passe en mode desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                isMenuOpen = false;
-                mobileMenu.classList.add('hidden');
-                sidebarBackdrop.classList.add('hidden');
-                document.body.style.overflow = '';
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-
-        // ✅ Gère l’apparition/disparition de la navbar au scroll (aussi sur mobile)
-        let lastScrollY = window.scrollY;
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('nav-scroll');
-            } else {
-                navbar.classList.remove('nav-scroll');
-            }
-
-            // Masque la navbar uniquement si menu fermé
-            if (!isMenuOpen) {
-                navbar.style.transform =
-                    window.scrollY > lastScrollY && window.scrollY > 100
-                        ? 'translateY(-100%)'
-                        : 'translateY(0)';
-            }
-
-            lastScrollY = window.scrollY;
-        });
-    </script>
-
-    <script>
-        const video = document.getElementById("bg-video");
-
-        const startTime = 0;
-        const endTime = 2;
-
-        video.addEventListener("loadedmetadata", () => {
-            video.currentTime = startTime;
-            video.play(); // Assure le démarrage
-        });
-
-        video.addEventListener("timeupdate", () => {
-            if (video.currentTime >= endTime - 0.05) {
-                video.classList.add("fade-out");
-
-                // Stoppe la vidéo pour éviter conflit de frames
-                video.pause();
-
-                setTimeout(() => {
-                    video.currentTime = startTime;
-
-                    // Enlève le fade et relance
-                    video.classList.remove("fade-out");
-                    video.classList.add("fade-in");
-
-                    video.play();
-                }, 300); // Temps de fondu
-            }
-        });
-
-        // En cas de redémarrage (facultatif)
-        video.addEventListener("ended", () => {
-            video.currentTime = startTime;
-            video.play();
-        });
-    </script>
 
 
 </body>

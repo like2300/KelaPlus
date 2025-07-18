@@ -1,4 +1,13 @@
-/* From Uiverse.io by zaeniahmad-id */ 
+.bg-line {
+ 
+  --color: #E1E1E1;
+  background-color: #F3F3F3;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 55px 55px;
+}
+
+/* From Uiverse.io by zaeniahmad-id */
 /* OOP CSS CODE from Zaeni Ahmad */
 .card {
   width: fit-content;
@@ -31,18 +40,22 @@
   transform: scale(1.2);
   border-radius: 15px;
 }
+
 /*instagram*/
 .card a:nth-child(1):hover {
   background-color: #d62976;
 }
+
 /* twitter*/
 .card a:nth-child(2):hover {
   background-color: #00acee;
 }
+
 /* linkdin*/
 .card a:nth-child(3):hover {
   background-color: #0072b1;
 }
+
 /* Whatsapp*/
 .card a:nth-child(4):hover {
   background-color: #25d366;
@@ -72,6 +85,7 @@
   transform: translateY(-40px);
   opacity: 0;
 }
+
 /*last-child*/
 .card a svg:last-child {
   display: flex;
@@ -81,6 +95,7 @@
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
+
 .card a svg:last-child path {
   fill: rgb(255, 255, 255);
 }
@@ -90,3 +105,93 @@
   transform: translateY(0px);
 }
  
+.video-thumbnail-container {
+  perspective: 1200px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.video-thumbnail-wrapper {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.video-thumbnail {
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.video-thumbnail-container:hover .video-thumbnail-wrapper {
+  transform: rotateY(10deg) rotateX(3deg) scale(1.02);
+}
+
+.video-thumbnail-container:hover .video-thumbnail {
+  box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.2);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.play-button svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+}
+
+.video-thumbnail-container:hover .play-button {
+  transform: translate(-50%, -50%) scale(1.1) translateZ(30px);
+  background: rgba(255, 255, 255, 1);
+}
+
+.video-thumbnail-container::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed, #9333ea);
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 1.5rem;
+}
+
+.video-thumbnail-container:hover::before {
+  opacity: 0.4;
+}
+
+@media (max-width: 768px) {
+  .video-thumbnail-container {
+    perspective: 800px;
+  }
+
+  .play-button {
+    width: 60px;
+    height: 60px;
+  }
+
+  .play-button svg {
+    width: 24px;
+    height: 24px;
+  }
+}
