@@ -1,7 +1,7 @@
 const CACHE_NAME = 'kela-offline-v4';
 const OFFLINE_URL = '/offline.html';
 const urlsToCache = [
-  '/',
+  '/index.html',
   '/offline.html',  // Ajout de la page hors ligne
   '/index.html',
   '/style/styles.css',
