@@ -4,10 +4,54 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kela+</title>
+    <title>KelaPlus</title>
+    <!-- icone for app seo -->
+
+    <link rel="apple-touch-icon" sizes="57x57" href="./apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+        <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="./videos/bg.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="font" crossorigin>
+
+    
+    <!-- SEO obligatoire -->
+    <meta name="description" content="Logiciel de gestion scolaire tout-en-un : notes, présence, facturation, communication parents-établissement. Testez Kela+ gratuitement.">
+    <meta name="keywords" content="logiciel gestion scolaire, école, primaire, collège, lycée, afrique, côte d'ivoire, saas éducation">
+    <link rel="canonical" href="/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kela+ – Gestion scolaire moderne">
+    <meta property="og:description" content="Diriger une école n’a jamais été aussi simple. Découvrez Kela+ en vidéo.">
+    <meta property="og:image" content="./img/logo.png">
+    <meta property="og:url" content="/">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kela+ – Gestion scolaire moderne">
+    <meta name="twitter:description" content="Diriger une école n’a jamais été aussi simple.">
+    <meta name="twitter:image" content="./img/logo.png">
+
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script  src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="./style/styles.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -16,7 +60,7 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary-light': '#d058f6',
+                        'primary-light': '#9c3dc5',
                         'primary': '#b852f0',
                         'accent': '#74e1eb',
                     }
@@ -122,6 +166,40 @@
 
 <body class="bg-gray-50 w-screen h-screen overflow-x-hidden">
 
+
+
+    <!-- =========  INSTALL PROMPT  ========= -->
+<div id="installPrompt" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-white rounded-2xl shadow-2xl p-5 z-[9999] hidden">
+  <div class="flex items-start space-x-4">
+    <!-- Icone -->
+    <img src="/android-icon-192x192.png" alt="Kela+" class="w-16 h-16 rounded-lg object-cover">
+    <div class="flex-1">
+      <h3 class="text-lg font-bold text-gray-900">Installer Kela+</h3>
+      <p class="text-sm text-gray-600 mt-1">Ajoutez l’appli sur votre écran d’accueil pour un accès rapide.</p>
+    </div>
+    <!-- Bouton fermer -->
+    <button id="closePrompt" aria-label="Fermer" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+  </div>
+
+  <!-- Actions -->
+  <div class="mt-4 flex items-center space-x-3">
+    <button id="installBtn" class="flex-1 bg-[#d058f6] text-white text-sm font-semibold py-2.5 rounded-lg hover:opacity-90 transition">
+      Installer
+    </button>
+    <button id="laterBtn" class="flex-1 border border-gray-300 text-gray-700 text-sm font-semibold py-2.5 rounded-lg hover:bg-gray-100 transition">
+      Plus tard
+    </button>
+  </div>
+
+  <!-- Astuce iOS -->
+  <p id="iosTip" class="text-xs text-gray-500 mt-3 hidden">
+    Appuyez sur <svg class="inline w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/></svg> puis « Sur l’écran d’accueil ».
+  </p>
+</div>
+
+
+    
+
     <!-- Vidéo uniquement sur la section principale -->
     <section class="relative h-[80%] md:h-screen backdrop-blur-lg flex items-center justify-center text-center overflow-hidden">
         <video id="bg-video" autoplay muted playsinline
@@ -144,8 +222,8 @@
                         <a href="#" class="text-primary-light hover:text-gray-300 font-medium transition"
                             aria-current="page">Accueil</a>
                         <a href="#services" class="text- hover:text-[#D058F6] font-medium transition">Services</a>
-                        <a href="#products" class="text- hover:text-[#D058F6] font-medium transition">Produits</a>
-                        <a href="#promotions" class="text- hover:text-[#D058F6] font-medium transition">Promotions</a>
+                        <a href="#Fonctionnalités" class="text- hover:text-[#D058F6] font-medium transition">Fonctionnalités</a>
+                        <a href="#Tarifs" class="text- hover:text-[#D058F6] font-medium transition">Tarifs</a>
                         <a href="#about" class="text- hover:text-[#D058F6] font-medium transition">À propos</a>
                         <button
                             class="px-4 py-2 bg-primary-light text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
@@ -1023,6 +1101,14 @@
 
     <script src="./index.js"></script>
     <script src="./app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js');
+        });
+        }
+    </script>
+    <script src="./instaler.js"></script>
 
 
 
