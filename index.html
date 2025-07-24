@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     <title>KelaPlus</title>
     <!-- icone for app seo -->
 
@@ -24,6 +24,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="./ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
         <!-- Préchargement des ressources critiques -->
     <link rel="preload" href="./videos/bg.mp4" as="video" type="video/mp4">
@@ -169,33 +170,33 @@
 
 
     <!-- =========  INSTALL PROMPT  ========= -->
-<div id="installPrompt" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-white rounded-2xl shadow-2xl p-5 z-[9999] hidden">
-  <div class="flex items-start space-x-4">
-    <!-- Icone -->
-    <img src="./android-icon-192x192.png" alt="Kela+" class="w-16 h-16 rounded-lg object-cover">
-    <div class="flex-1">
-      <h3 class="text-lg font-bold text-gray-900">Installer Kela+</h3>
-      <p class="text-sm text-gray-600 mt-1">Ajoutez l’appli sur votre écran d’accueil pour un accès rapide.</p>
-    </div>
-    <!-- Bouton fermer -->
-    <button id="closePrompt" aria-label="Fermer" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
-  </div>
+        <div id="installPrompt" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-white rounded-2xl shadow-2xl p-5 z-[9999] hidden">
+        <div class="flex items-start space-x-4">
+            <!-- Icone -->
+            <img src="./android-icon-192x192.png" alt="Kela+" class="w-16 h-16 rounded-lg object-cover">
+            <div class="flex-1">
+            <h3 class="text-lg font-bold text-gray-900">Installer Kela+</h3>
+            <p class="text-sm text-gray-600 mt-1">Ajoutez l’appli sur votre écran d’accueil pour un accès rapide.</p>
+            </div>
+            <!-- Bouton fermer -->
+            <button id="closePrompt" aria-label="Fermer" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+        </div>
 
-  <!-- Actions -->
-  <div class="mt-4 flex items-center space-x-3">
-    <button id="installBtn" class="flex-1 bg-[#d058f6] text-white text-sm font-semibold py-2.5 rounded-lg hover:opacity-90 transition">
-      Installer
-    </button>
-    <button id="laterBtn" class="flex-1 border border-gray-300 text-gray-700 text-sm font-semibold py-2.5 rounded-lg hover:bg-gray-100 transition">
-      Plus tard
-    </button>
-  </div>
+        <!-- Actions -->
+        <div class="mt-4 flex items-center space-x-3">
+            <button id="installBtn" class="flex-1 bg-[#d058f6] text-white text-sm font-semibold py-2.5 rounded-lg hover:opacity-90 transition">
+            Installer
+            </button>
+            <button id="laterBtn" class="flex-1 border border-gray-300 text-gray-700 text-sm font-semibold py-2.5 rounded-lg hover:bg-gray-100 transition">
+            Plus tard
+            </button>
+        </div>
 
-  <!-- Astuce iOS -->
-  <p id="iosTip" class="text-xs text-gray-500 mt-3 hidden">
-    Appuyez sur <svg class="inline w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/></svg> puis « Sur l’écran d’accueil ».
-  </p>
-</div>
+        <!-- Astuce iOS -->
+        <p id="iosTip" class="text-xs text-gray-500 mt-3 hidden">
+            Appuyez sur <svg class="inline w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/></svg> puis « Sur l’écran d’accueil ».
+        </p>
+        </div>
 
 
     
@@ -226,16 +227,16 @@
                         <a href="#Tarifs" class="text- hover:text-[#D058F6] font-medium transition">Tarifs</a>
                         <a href="#about" class="text- hover:text-[#D058F6] font-medium transition">À propos</a>
                         <button
-                            class="px-4 py-2 bg-primary-light text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
-                            <span class="material-icons align-middle mr-3">shopping_cart</span>Essayer gratuitement
+                            class="px-4 flex  py-2 bg-primary-light text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.521 9.683A2.004 2.004 0 0 0 9.7 17H18v-2H9.7l-.728-2H18c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 4z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg></span>Essayer gratuitement
                         </button>
                     </div>
                     <!-- Mobile Menu Button -->
                     <div class="md:hidden">
                         <button id="menu-toggle"
-                            class="text-black focus:outline-none focus:ring-2 focus:ring-primary-light rounded-lg p-1"
+                            class="text-black flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary-light rounded-lg p-1"
                             aria-label="Menu principal" aria-expanded="false" aria-controls="mobile-menu">
-                            <span class="material-icons text-3xl">menu</span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" style="fill: rgb(0, 0, 0);transform: ;msFilter:;"><path d="M4 6h16v2H4zm4 5h12v2H8zm5 5h7v2h-7z"></path></svg></span>
                         </button>
                     </div>
                 </div>
@@ -259,7 +260,8 @@
                 <div class="mt-9 flex flex-col sm:flex-row sm:space-x-5">
                     <a href="#"
                         class="inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white bg-gray-900 rounded-xl transition hover:bg-gray-600 focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
-                        <span class="material-icons align-middle mr-3">shopping_cart</span>Essayer gratuitement
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.521 9.683A2.004 2.004 0 0 0 9.7 17H18v-2H9.7l-.728-2H18c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 4z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg></span>Essayer gratuitement
+                   
                     </a>
                     <a href="#"
                         class="inline-flex bg-white items-center justify-center px-6 py-3 mt-4 sm:mt-0 text-lg font-bold   border-2 border-gray-400 rounded-xl transition hover:bg-gray-900  text-primary-light text-black">
@@ -285,9 +287,9 @@
             <div class="flex justify-between items-center p-4 ">
                 <img src="./img/logo.png" alt="Greatfy" class="h-16 w-auto" />
                 <button id="close-menu" onclick="window.location.href='./index.html'"
-                    class="text-white h-16 w-16 p-2 rounded-full  focus:ring-2 focus:ring-primary-light"
+                    class="text-white flex items-center justify-center h-16 w-16 p-2 rounded-full  focus:ring-2 focus:ring-primary-light"
                     aria-label="Fermer le menu">
-                    <span class="material-icons">close</span>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg></span>
                 </button>
             </div>
             <nav class="py-4" aria-label="Navigation mobile">
@@ -308,10 +310,10 @@
                     <span class="material-icons mr-3">info</span>À propos
                 </a>
                 <button
-                    class="px-4 m-6 py-2 w-[350px] h-16 bg-primary-light text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
+                    class="px-4  flex items-center justify-center m-6 py-2 w-[350px] h-16 bg-primary-light text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
                     <!-- panier ecommence material icon import-->
-                    <span class="material-icons align-middle mr-3">shopping_cart</span>
-                    Essayer gratuitement
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.521 9.683A2.004 2.004 0 0 0 9.7 17H18v-2H9.7l-.728-2H18c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 4z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg></span>Essayer gratuitement
+                   
                 </button>
             </nav>
         </div>
@@ -338,9 +340,9 @@
 
     <div class=" mx-auto max-w-7xl px-6 lg:px-8 ">
         <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in [animation-fill-mode:both] [animation-delay:200ms]">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 animate-fade-in [animation-fill-mode:both] [animation-delay:200ms]">
                 Qu'est-ce que <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Kela+</span> ?
-            </h2>
+            </h1>
             <div class="w-20 h-1.5 bg-gradient-to-r from-primary to-primary-light mx-auto mb-6 rounded-full animate-grow [animation-fill-mode:both] [animation-delay:400ms]"></div>
             <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in [animation-fill-mode:both] [animation-delay:600ms]">
                 Découvrez Kela+ à travers cette vidéo de présentation qui vous montrera son fonctionnement innovant et comment il peut transformer votre expérience.
@@ -442,13 +444,13 @@
                     <div
                         class="absolute -left-4 top-16 sm:left-16 top-20 sm:top-24 md:-left-12 xl:-left-16 md:top-16 xl:top-24 rotate-[-90deg] text-sm tracking-widest flex flex-row justify-start gap-2">
                         <div class="xl:w-16 md:w-10 sm:w-8 w-8 h-[2px] bg-white mt-2 mx-auto"></div>
-                        <p>Nos outils</p>
+                        <h2>Nos outils</h2>
                     </div>
 
                     <!-- Main Heading -->
-                    <h2 class="text-3xl md:text-4xl xl:text-6xl font-bold leading-tight">
+                    <h1 class="text-3xl md:text-4xl xl:text-6xl font-bold leading-tight">
                         Explorez nos outils et organisez vous avec <span>Kela+</span>
-                    </h2>
+                    </h1>
                 </div>
 
                 <p class="p-3 text-white text-lg leading-relaxed">
@@ -463,8 +465,9 @@
                 </p>
                 <span class="py-4 px-2 space-x-2 rounded-lg   ">
                     <button
-                        class="px-4 mt-4 py-2 bg-black text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
-                        <span class="material-icons align-middle mr-3">shopping_cart</span>Essayer gratuitement
+                        class="px-4 flex p-2 mt-4 py-2 bg-black text-white font-bold rounded-full transform hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-light">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);transform: ;msFilter:;"><path d="M21 4H2v2h2.3l3.521 9.683A2.004 2.004 0 0 0 9.7 17H18v-2H9.7l-.728-2H18c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 4z"></path><circle cx="10.5" cy="19.5" r="1.5"></circle><circle cx="16.5" cy="19.5" r="1.5"></circle></svg></span>Essayer gratuitement
                     </button>
 
                 </span>
@@ -558,7 +561,7 @@
                 <div class="no-scrollbar overflow-hidden">
                     <div class="flex no-scrollbar gap-4 justify-start items-start overflow-x-auto">
                         <div class="text-center">
-                            <h2 class="text-4xl font-bold text-gray-800 mb-4">Nos Tarifs Kela+</h2>
+                            <h1 class="text-4xl font-bold text-gray-800 mb-4">Nos Tarifs Kela+</h1>
                             <div class="w-20 h-1 bg-primary-light mx-auto mb-6"></div>
                             <p class="text-xl text-gray-600 mx-auto max-w-3xl">
                                 Découvrez nos offres adaptées à chaque type d'établissement scolaire. Choisissez la formule qui correspond le mieux à vos besoins ou contactez-nous pour une solution personnalisée.
@@ -1003,8 +1006,8 @@
                     class="absolute right-0 top-0  z-50 aspect-square w-full max-w-3xl translate-x-3/4 rounded-full bg-pink-500/60 blur-[10rem] lg:-top-[40rem] lg:left-1/2 lg:-translate-x-1/2">
                 </div>
                 <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-24 lg:text-start">
-                    <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Comment obtenir kela+ ?
-                    </h2>
+                    <h1 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Comment obtenir kela+ ?
+                    </h1>
                     <p class="mt-6 text-base text-gray-300">Pour obtenir kela+, il vous suffit de vous inscrire sur
                         notre site et de suivre les instructions.</p>
                     <div class="mt-10 flex items-start lg:justify-start justify-center p-x-6  ">
@@ -1018,7 +1021,7 @@
                 <div class="relative mt-16 h-80 lg:mt-8 lg:h-auto">
                     <img width="1920" height="1139"
                         class="absolute left-0 top-0 w-[58rem] max-w-none rounded-2xl bg-white/5 ring-4 ring-white/10 lg:top-14"
-                        src="./img/call_action.png" />
+                        src="./img/call_action.png"  alt="screen for KelaPlus app "/>
                 </div>
             </div>
         </div>
@@ -1027,72 +1030,132 @@
 
  
 
-
-    <footer
-        class=" w-full mt-10 md:px-[50px] lg:px-24 sm:px-16 px-6 py-14 bg-[#191a23] rounded-tl-[15px] rounded-tr-[15px] max-w-[1440px] mx-auto  ">
-        <div class="flex flex-col md:items-stretch items-center md:gap-0 gap-5">
-            <div
-                class="contents  md:flex  mx-auto w-full  md:flex-row flex-col md:justify-between  items-center gap0-40 ">
-                <ul
-                    class="order-2 md:order-none flex flex-col md:flex-row justify-start items-center gap-3 md:gap-5 lg:gap-10 text-white text-base lg:text-lg font-normal  underline">
-                    <li class="cursor-pointer"> Home 
-
-
-</li>
-                    <li class="cursor-pointer">Module</li>
-                    <li class="cursor-pointer">Promotions</li>
-                    <li class="cursor-pointer">Prix</li>
-                    <li class="cursor-pointer">À propos</li>
-                </ul>
-                <div class="order-5 md:order-none  flex justify-start items-start gap-5 md:gap-3 lg:gap-5"><svg
-                        class="w-8 h-8 cursor-pointer" viewBox="0 0 30 30" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="15" cy="15" r="15" fill="white"></circle>
-                        <path d="M8.22178 22.0586H11.3059V12.0742H8.22178V22.0586Z" fill="black"></path>
-                        <path
-                            d="M7.94141 8.88672C7.94141 9.87109 8.7358 10.668 9.76384 10.668C10.7451 10.668 11.5395 9.87109 11.5395 8.88672C11.5395 7.90234 10.7451 7.05859 9.76384 7.05859C8.7358 7.05859 7.94141 7.90234 7.94141 8.88672Z"
-                            fill="black"></path>
-                        <path
-                            d="M19.8106 22.0586H22.9414V16.5742C22.9414 13.9023 22.3339 11.793 19.2031 11.793C17.7078 11.793 16.6797 12.6367 16.2592 13.4336H16.2124V12.0742H13.2685V22.0586H16.3526V17.1367C16.3526 15.8242 16.5863 14.5586 18.2218 14.5586C19.8106 14.5586 19.8106 16.0586 19.8106 17.1836V22.0586Z"
-                            fill="black"></path>
-                    </svg><svg class="w-8 h-8 cursor-pointer" viewBox="0 0 30 30" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M30 15.0913C30 6.75456 23.2863 0 15 0C6.71371 0 0 6.75456 0 15.0913C0 22.6369 5.44355 28.9047 12.6411 30V19.4726H8.83064V15.0913H12.6411V11.8053C12.6411 8.03245 14.879 5.90264 18.2661 5.90264C19.9597 5.90264 21.6532 6.2069 21.6532 6.2069V9.91886H19.7782C17.9032 9.91886 17.2984 11.0751 17.2984 12.2921V15.0913H21.4718L20.8065 19.4726H17.2984V30C24.496 28.9047 30 22.6369 30 15.0913Z"
-                            fill="white"></path>
-                    </svg><svg class="w-8 h-8 cursor-pointer" viewBox="0 0 30 30" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="15" cy="15" r="15" fill="white"></circle>
-                        <path
-                            d="M21.9961 11.4915C22.6854 10.9745 23.3058 10.3541 23.7884 9.63028C23.168 9.90602 22.4442 10.1128 21.7204 10.1818C22.4786 9.73369 23.0301 9.04435 23.3058 8.18267C22.6165 8.59628 21.8238 8.90648 21.031 9.07881C20.3417 8.35501 19.4111 7.94141 18.3771 7.94141C16.378 7.94141 14.758 9.56135 14.758 11.5604C14.758 11.8362 14.7925 12.1119 14.8614 12.3876C11.8628 12.2153 9.1744 10.7677 7.38212 8.59628C7.07192 9.11328 6.89959 9.73369 6.89959 10.423C6.89959 11.6638 7.51999 12.7668 8.51953 13.4216C7.93359 13.3872 7.34766 13.2493 6.86512 12.9736V13.008C6.86512 14.7659 8.10593 16.2135 9.76034 16.5581C9.48461 16.6271 9.13994 16.696 8.82973 16.696C8.58847 16.696 8.38166 16.6615 8.1404 16.6271C8.58847 18.0747 9.93267 19.1087 11.5182 19.1432C10.2773 20.1082 8.72633 20.6942 7.03745 20.6942C6.72725 20.6942 6.45152 20.6597 6.17578 20.6252C7.76126 21.6592 9.65694 22.2452 11.725 22.2452C18.3771 22.2452 21.9961 16.7649 21.9961 11.974C21.9961 11.8017 21.9961 11.6638 21.9961 11.4915Z"
-                            fill="black"></path>
-                    </svg></div>
+<footer class="bg-[#0f172a] text-gray-300 w-full mt-20">
+    <!-- Main Footer Content -->
+    <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <!-- Logo & Description -->
+        <div class="md:col-span-1">
+            <div class="flex items-center mb-6">
+                <img src="./img/logo.png" alt="KelaPlus Logo" class="h-20 w-auto">
+             </div>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+                La solution tout-en-un pour une gestion scolaire moderne et efficace. Simplifiez votre administration et concentrez-vous sur l'essentiel.
+            </p>
+            <div class="flex space-x-4">
+                <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-[#d058f6] transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-[#d058f6] transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-[#d058f6] transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube" class="text-gray-400 hover:text-[#d058f6] transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                </a>
             </div>
-            <div class="contents md:flex  mt-16  md:flex-row flex-col justify-between items-center">
-                <div
-                    class="order-3 md:order-none inline-flex flex-col justify-start items-center md:items-start gap-3  md:gap-7">
-                    <h3 class="px-1.5 bg-[#d058f6] rounded-md text-black text-xl font-medium ">Contact us:</h3>
-                    <p class="flex flex-col justify-start md:items-start items-center gap-2 md:gap-5"><span
-                            class=" text-white text-lg font-normal ">Email: info@positivus.com</span><span
-                            class=" text-white text-lg font-normal ">Phone: 555-567-8901</span><span
-                            class=" text-white md:text-left text-center text-lg font-normal ">Address: 1234 Main
-                            St<br>Moonstone City, Stardust State 12345</span></p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+            <h3 class="text-white text-lg font-semibold mb-6">Navigation</h3>
+            <ul class="space-y-3">
+                <li><a href="#" class="hover:text-[#d058f6] transition">Accueil</a></li>
+                <li><a href="#services" class="hover:text-[#d058f6] transition">Services</a></li>
+                <li><a href="#fonctionnalites" class="hover:text-[#d058f6] transition">Fonctionnalités</a></li>
+                <li><a href="#tarifs" class="hover:text-[#d058f6] transition">Tarifs</a></li>
+                <li><a href="#about" class="hover:text-[#d058f6] transition">À propos</a></li>
+                <li><a href="#contact" class="hover:text-[#d058f6] transition">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Modules -->
+        <div>
+            <h3 class="text-white text-lg font-semibold mb-6">Modules</h3>
+            <ul class="space-y-3">
+                <li><a href="#" class="hover:text-[#d058f6] transition">Gestion des notes</a></li>
+                <li><a href="#" class="hover:text-[#d058f6] transition">Présence</a></li>
+                <li><a href="#" class="hover:text-[#d058f6] transition">Facturation</a></li>
+                <li><a href="#" class="hover:text-[#d058f6] transition">Communication</a></li>
+                <li><a href="#" class="hover:text-[#d058f6] transition">Kela+ Document</a></li>
+                <li><a href="#" class="hover:text-[#d058f6] transition">Kela+ Carte</a></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+            <h3 class="text-white text-lg font-semibold mb-6">Newsletter</h3>
+            <p class="text-gray-400 mb-4">Abonnez-vous pour recevoir nos dernières actualités et offres spéciales.</p>
+            <form class="flex flex-col space-y-3">
+                <input type="email" placeholder="Votre email" class="px-4 py-3 bg-[#1e293b] border border-[#334155] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#d058f6] focus:border-transparent">
+                <button type="submit" class="bg-[#d058f6] hover:bg-[#b852f0] text-white font-medium py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                    S'abonner
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="bg-[#1e293b] py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-[#d058f6]/10 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-[#d058f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-medium">Email</h4>
+                        <p class="text-gray-400">contact@kelaplus.com</p>
+                    </div>
                 </div>
-                <div
-                    class="order-4 md:order-none p-6  md:px-10 md:py-14 bg-[#292a32] rounded-2xl flex flex-col items-stretch lg:w-auto w-full lg:flex-row  justify-start lg:items-start gap-5 overflow-hidden">
-                    <input type="text"
-                        class="0w-72 px-4 md:px-9 py-5 rounded-2xl outline outline-1 bg-[#292a32] outline-offset-[-1px] outline-white  overflow-hidden text-white text-lg font-normal "
-                        placeholder="Enter your email"><button
-                        class="px-3 md:px-9 py-5 bg-[#d058f6] rounded-2xl text-center  text-black text-xl font-normal  leading-7">Subscribe
-                        to news</button></div>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-[#d058f6]/10 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-[#d058f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-medium">Téléphone</h4>
+                        <p class="text-gray-400">+224 06 XX XX XX</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-[#d058f6]/10 p-3 rounded-full">
+                        <svg class="w-6 h-6 text-[#d058f6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-medium">Adresse</h4>
+                        <p class="text-gray-400">Brazzaville, Congo</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="mt-12 border-t pt-8 flex justify-start items-start gap-10">
-            <p class="text-white text-sm font-normal  leading-7">© <script>document.write(new Date().getFullYear())</script> Positivus. All Rights Reserved.</p><a
-                class="cursor-pointer text-white text-sm font-normal  underline leading-7">Privacy Policy</a>
-        </div>
-    </footer>
+    </div>
 
+    <!-- Copyright & Legal -->
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center border-t border-[#334155]">
+        <p class="text-gray-400 text-sm">© <script>document.write(new Date().getFullYear())</script> KelaPlus. Tous droits réservés.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="text-gray-400 hover:text-[#d058f6] text-sm transition">Politique de confidentialité</a>
+            <a href="#" class="text-gray-400 hover:text-[#d058f6] text-sm transition">Conditions d'utilisation</a>
+            <a href="#" class="text-gray-400 hover:text-[#d058f6] text-sm transition">Mentions légales</a>
+        </div>
+    </div>
+</footer>
 
 
 
@@ -1109,9 +1172,7 @@
         }
     </script>
     <script src="./instaler.js"></script>
-
-
-
+ 
 </body>
 
 </html>
